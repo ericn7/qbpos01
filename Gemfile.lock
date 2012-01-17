@@ -32,6 +32,9 @@ GEM
       multi_json (~> 1.0)
     ansi (1.4.1)
     arel (2.2.1)
+    authlogic (3.1.0)
+      activerecord (>= 3.0.7)
+      activerecord (>= 3.0.7)
     bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.0.0)
     coffee-rails (3.1.1)
@@ -56,6 +59,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.0.4)
+    oauth (0.4.5)
     pg (0.12.2-x86-mingw32)
     polyglot (0.3.3)
     rack (1.3.6)
@@ -111,8 +115,10 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  authlogic
   coffee-rails (~> 3.1.0)
   jquery-rails
+  oauth
   pg
   rails (= 3.1.0)
   sass-rails (~> 3.1.0)

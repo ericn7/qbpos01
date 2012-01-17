@@ -5,11 +5,25 @@
   <%= render 'layouts/stylesheets' %>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+
+
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="container">
+    <%= render 'layouts/header' %>
+
 
 <%= yield %>
+
+</div>
+
+<script type="text/javascript" src="https://appcenter.intuit.com/Content/IA/intuit.ipp.anywhere.js"></script>
+<script>intuit.ipp.anywhere.setup({
+  menuProxy: 'http://example.com/myapp/BlueDotMenu',
+  grantUrl: 'http://example.com/myapp/RequestOAuthToken'
+});</script>
 
 </body>
 </html>

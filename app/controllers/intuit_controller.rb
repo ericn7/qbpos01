@@ -1,0 +1,2 @@
+class IntuitController < ApplicationController
+end

@@ -44,6 +44,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.2.0)
+    crack (0.3.1)
     erubis (2.7.0)
     execjs (1.2.13)
       multi_json (~> 1.0)
@@ -117,6 +118,7 @@ PLATFORMS
 DEPENDENCIES
   authlogic
   coffee-rails (~> 3.1.0)
+  crack
   jquery-rails
   oauth
   pg

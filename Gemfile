@@ -10,6 +10,7 @@ gem 'pg'
 # Intuit
 gem "authlogic"
 gem "oauth"
+gem "crack"
 
 
 

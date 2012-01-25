@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+
+
   def home
   end
 
@@ -6,6 +8,7 @@ class PagesController < ApplicationController
   end
   
   def intuitstart
+
   end
 
 end

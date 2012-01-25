@@ -13,6 +13,6 @@ class User < ActiveRecord::Base
   end
   
   def connected_to_intuit?
-    return intuit_access_token? && intuit_access_secret?
+    return (intuit_access_token? && intuit_access_secret? rescue false)
   end
 end

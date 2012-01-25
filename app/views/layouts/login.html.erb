@@ -1,0 +1,22 @@
+<html>
+<head>
+  <title>Qbpos01</title>
+  <%= render 'layouts/stylesheets' %>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div id="map_canvas"></div>
+  <div id="login">
+    <div id="login-header">
+      <h1>Customer.com</h1>
+    </div>
+    <div id="login-inner">    
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>

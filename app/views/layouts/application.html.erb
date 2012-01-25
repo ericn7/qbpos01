@@ -19,8 +19,8 @@
 
 <script type="text/javascript" src="https://appcenter.intuit.com/Content/IA/intuit.ipp.anywhere.js"></script>
 <script>intuit.ipp.anywhere.setup({
-  menuProxy: 'http://example.com/myapp/BlueDotMenu',
-  grantUrl: 'http://example.com/myapp/RequestOAuthToken'
+      menuProxy: '<%= @blue_dot_url %>',
+      grantUrl: '<%= intuit_connect_url %>'
 });</script>
 
 </body>

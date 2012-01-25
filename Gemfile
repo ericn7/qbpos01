@@ -11,7 +11,14 @@ gem 'pg'
 gem "authlogic"
 gem "oauth"
 gem "crack"
+gem "redis"
+gem "formtastic", "2.0.0rc2"
 
+
+gem "httparty"
+gem "haml", ">= 3.0.0"
+gem "compass", ">= 0.11.3"
+#gem "jammit"
 
 
 # Gems used only for assets and not required

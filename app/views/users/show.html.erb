@@ -1,0 +1,6 @@
+<%- if current_user.connected_to_intuit? -%>
+Your account has been connected to Intuit!<br />Want to <%= link_to "disconnect your account?", users_cancel_path, :class => "button", :id => 'disconnect-link' %>
+<%- else -%>
+<ipp:connectToIntuit GrantURL="<%= intuit_connect_url %>"></ipp:connectToIntuit>
+<br />
+<%- end -%>

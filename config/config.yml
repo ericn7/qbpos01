@@ -1,0 +1,8 @@
+development:
+  intuit_application_token: 1c39c498b5af6b4b4fb886bb51eee6dd5fe9
+  intuit_consumer_key: qyprdmRW3NSoZXONLBq2r29oIfUIk7
+  intuit_consumer_secret: gLk1Vx714jSoYK0skPy55Pb27oCqlIC0bRbEM5WM
+production: 
+  intuit_application_token: 3a912b93bcecfb4437b8e6cb400de3723f85
+  intuit_consumer_key: qyprdE1UwIxCd46qgKUH452sH5WgLg
+  intuit_consumer_secret: VfPqWti5YkPoWzfNBeM1D4oDHjbTtHTowcdhk5hq

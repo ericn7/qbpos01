@@ -37,17 +37,22 @@ class CompanyController < ApplicationController
 #		@customers = @customers["RestResponse"]["Customers"]
 #	  end
 #	else
-	  e = @company.intuit_token.get("https://services.intuit.com/sb/customer/v2/#{@company.realm}")
+	  #e = @company.intuit_token.get("https://services.intuit.com/sb/customer/v2/#{@company.realm}")
+	  e = @company.intuit_token.post("https://qbo.intuit.com/qbo1/resource/customers/v2/#{@company.realm}")
 	  body = e.body
 
 render :text => body
 	  
+=begin
 	  $redis.set("intuit:ipp:customers:#{@company.id}", body)
 	  b = Crack::XML.parse(body)
 	  @customers = b["RestResponse"]["Customers"] || {}
 	  
 #render :text => @customers
 #	end
+	
+#render :text => body
+
 	@final = []
 	
 	if(@customers["Customer"])
@@ -70,6 +75,7 @@ c["Address"]["CountrySubDivisionCode"], c["Address"]["PostalCode"]].join(" ") })
 	  end
 	end
 #	render :json => @final
+=end
   end
 
   def reconnect

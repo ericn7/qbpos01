@@ -79,7 +79,96 @@ c["Address"]["CountrySubDivisionCode"], c["Address"]["PostalCode"]].join(" ") })
   end
 
   def reconnect
-	render :layout => false
+		render :layout => false
+  end
+	
+	def test
+			e = @company.intuit_token.post("https://qbo.intuit.com/qbo1/resource/account/v2/#{@company.realm}", "<Account xmlns:ns2=\"http://www.intuit.com/sb/cdm/qbo\" xmlns=\"http://www.intuit.com/sb/cdm/v2\"><Name>Test Account </Name><Desc>Test Account</Desc><Subtype>Savings</Subtype><AcctNum>5002</AcctNum><OpeningBalanceDate>2010-05-14</OpeningBalanceDate></Account>", {"Content-Type" => "application/xml", "standalone" => "yes", "encoding" => "UTF-8"})
+
+		body = e.body
+
+		render :text => body
+
+	end
+	
+	end
+  
+  def testold
+	
+  
+  	#e = @company.intuit_token.post("https://qbo.intuit.com/qbo1/resource/customers/v2/#{@company.realm}")
+		
+#		e = @company.intuit_token.post("https://qbo.intuit.com/qbo1/resource/sales-receipt/v2/#{@company.realm}", :body => 
+=begin
+		{	:SalesReceipt => {
+				:Header => {
+					:DocNumber => '99009926',
+					:TxnDate  => '2010-10-22',
+					:Currency     => 'USD',
+					:CustomerId    => '1',
+					:ShipDate    => '2011-04-22',
+					:TotalAmt => '2500',
+					:DiscountAmt => '0'
+				},
+				:Line => {
+					:Desc => 'Keyboards',
+					:Amount => '2500',
+					:ItemName => 'Pen',
+					:UnitPrice => '10',
+					:Qty => '2'
+				}
+			}
+		})
+
+"<SalesReceipt xmlns=\"http://www.intuit.com/sb/cdm/qbo\" xmlns=\"http://www.intuit.com/sb/cdm/v2\">
+<Header>
+<DocNumber>99009926</DocNumber>
+<TxnDate>2010-10-22</TxnDate>
+<Currency>USD</Currency>
+<CustomerId idDomain=\"QBO\">1</CustomerId>
+<ShipDate>2011-04-22</ShipDate>
+<TotalAmt>2500</TotalAmt>
+<DiscountAmt>0</DiscountAmt>
+</Header>
+<Line>
+<Desc>Keyboards</Desc>
+<Amount>2500</Amount>
+<ItemName>Pen</ItemName>
+<UnitPrice>10</UnitPrice>
+<Qty>2</Qty>
+</Line>
+</SalesReceipt>")
+
+		e = @company.intuit_token.post("https://qbo.intuit.com/qbo1/resource/account/v2/#{@company.realm}",
+				{ :body => 
+						"<Account xmlns:ns2=\"http://www.intuit.com/sb/cdm/qbo\" xmlns=\"http://www.intuit.com/sb/cdm/v2\">
+								<Name>Test Account 2</Name>
+								<Desc>Test Account</Desc>
+								<Subtype>Savings</Subtype>
+								<AcctNum>5001</AcctNum>
+								<OpeningBalanceDate>2010-05-14</OpeningBalanceDate>
+						</Account>",
+				:headers => {
+						"Content-Type" => "application/xml",
+						"standalone" => "yes",
+						"encoding" => "UTF-8",
+						"xml version" => "1.0"
+				}}
+		)
+
+
+=end
+
+#d1 = "<?xml version=\"1.0\" encoding=\"utf-8\"?><Account xmlns:ns2=\"http://www.intuit.com/sb/cdm/qbo\" xmlns=\"http://www.intuit.com/sb/cdm/v2\"><Name>Test Account 2</Name><Desc>Test Account</Desc><Subtype>Savings</Subtype><AcctNum>5001</AcctNum><OpeningBalanceDate>2010-05-14</OpeningBalanceDate></Account>"
+
+#e = @company.intuit_token.post("https://qbo.intuit.com/qbo1/resource/account/v2/#{@company.realm}", :body => d1.to_xml )
+
+		e = @company.intuit_token.post("https://qbo.intuit.com/qbo1/resource/account/v2/#{@company.realm}", "<Account xmlns:ns2=\"http://www.intuit.com/sb/cdm/qbo\" xmlns=\"http://www.intuit.com/sb/cdm/v2\"><Name>Test Account </Name><Desc>Test Account</Desc><Subtype>Savings</Subtype><AcctNum>5002</AcctNum><OpeningBalanceDate>2010-05-14</OpeningBalanceDate></Account>", {"Content-Type" => "application/xml", "standalone" => "yes", "encoding" => "UTF-8"})
+		
+	  body = e.body
+
+		render :text => body
+  
   end
 
   private

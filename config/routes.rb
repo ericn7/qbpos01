@@ -32,6 +32,8 @@ Qbpos01::Application.routes.draw do
   match "company/:id/disconnect" => "company#disconnect", :as => :company_disconnect
   match "company/:id/reconnect" => "company#reconnect", :as => :company_reconnect
   
+  match "company/:id/test" => "company#test", :as => :company_test
+  
   
   #######################
 

@@ -15,7 +15,7 @@ gem "redis"
 gem "formtastic", "2.0.0rc2"
 
 
-gem "httparty"
+#gem "httparty"
 gem "haml", ">= 3.0.0"
 gem "compass", ">= 0.11.3"
 #gem "jammit"

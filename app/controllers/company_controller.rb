@@ -41,7 +41,7 @@ class CompanyController < ApplicationController
 	  e = @company.intuit_token.post("https://qbo.intuit.com/qbo1/resource/customers/v2/#{@company.realm}")
 	  body = e.body
 
-render :text => body
+render :xml => body
 	  
 =begin
 	  $redis.set("intuit:ipp:customers:#{@company.id}", body)
@@ -83,13 +83,25 @@ c["Address"]["CountrySubDivisionCode"], c["Address"]["PostalCode"]].join(" ") })
   end
 	
 	def test
-			e = @company.intuit_token.post("https://qbo.intuit.com/qbo1/resource/account/v2/#{@company.realm}", "<Account xmlns:ns2=\"http://www.intuit.com/sb/cdm/qbo\" xmlns=\"http://www.intuit.com/sb/cdm/v2\"><Name>Test Account </Name><Desc>Test Account</Desc><Subtype>Savings</Subtype><AcctNum>5002</AcctNum><OpeningBalanceDate>2010-05-14</OpeningBalanceDate></Account>", {"Content-Type" => "application/xml", "standalone" => "yes", "encoding" => "UTF-8"})
+
+
+		createrecordxml = "
+<SalesReceipt xmlns:ns2=\"http://www.intuit.com/sb/cdm/qbo\" xmlns=\"http://www.intuit.com/sb/cdm/v2\"> 
+	<Header> 
+		<CustomerId>37</CustomerId>  
+	</Header> 
+	<Line> 
+		<Amount>70.00</Amount> 
+	</Line>  
+</SalesReceipt>
+		"
+
+		e = @company.intuit_token.post("https://qbo.intuit.com/qbo1/resource/sales-receipt/v2/#{@company.realm}", createrecordxml, {"Content-Type" => "application/xml", "standalone" => "yes", "encoding" => "UTF-8"})
+#e = @company.intuit_token.post("https://qbo.intuit.com/qbo1/resource/sales-receipt/v2/#{@company.realm}")
 
 		body = e.body
 
-		render :text => body
-
-	end
+		render :xml => body
 	
 	end
   
@@ -156,6 +168,48 @@ c["Address"]["CountrySubDivisionCode"], c["Address"]["PostalCode"]].join(" ") })
 				}}
 		)
 
+
+	createrecordxml = "
+		<Account xmlns:ns2=\"http://www.intuit.com/sb/cdm/qbo\" xmlns=\"http://www.intuit.com/sb/cdm/v2\">
+		<Name>Test Account 2</Name>
+		<Desc>Test Account 2</Desc>
+		<Subtype>Savings</Subtype>
+		<AcctNum>5003</AcctNum>
+		<OpeningBalanceDate>2010-05-14</OpeningBalanceDate>
+		</Account>
+	"
+
+			e = @company.intuit_token.post("https://qbo.intuit.com/qbo1/resource/account/v2/#{@company.realm}", createrecordxml, {"Content-Type" => "application/xml", "standalone" => "yes", "encoding" => "UTF-8"})
+######################################################
+
+		createrecordxml = "
+<Invoice xmlns=\"http://www.intuit.com/sb/cdm/v2\" xmlns:ns2=\"http://www.intuit.com/sb/cdm/qbopayroll/v1\" xmlns:ns3=\"http://www.intuit.com/sb/cdm/qbo\">
+		<Header>
+				<DocNumber>00010</DocNumber>
+				<TxnDate>2010-08-07-07:00</TxnDate>
+				<Msg>No Black Ink Pens</Msg>
+				<Note>Blue Ink pens only</Note>
+				<CustomerId>37</CustomerId>
+				<SubTotalAmt>400.00</SubTotalAmt>
+				<TotalAmt>400.00</TotalAmt>
+				<DueDate>2010-08-16-07:00</DueDate>
+				<BillEmail>john_doe@digitalinsight.com</BillEmail>
+		</Header>
+		<Line>
+				<Desc>Pens</Desc>
+				<Amount>200.00</Amount>
+				<Taxable>true</Taxable>
+				<ItemId>4</ItemId>
+				<UnitPrice>100</UnitPrice>
+				<Qty>4</Qty>
+		</Line>
+</Invoice>
+		"
+
+		e = @company.intuit_token.post("https://qbo.intuit.com/qbo1/resource/invoice/v2/#{@company.realm}", createrecordxml, {"Content-Type" => "application/xml", "standalone" => "yes", "encoding" => "UTF-8"})
+
+
+####################################################
 
 =end
 
